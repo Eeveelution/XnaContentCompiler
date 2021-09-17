@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 
 namespace XnaContentCompiler {
     public abstract class ContentCompiler {
@@ -13,8 +14,8 @@ namespace XnaContentCompiler {
         }
 
         private MemoryStream WriteResourceHeader() {
-            using MemoryStream stream = new();
-            using BinaryWriter writer = new(stream);
+            MemoryStream stream = new();
+            using BinaryWriter writer = new(stream, Encoding.Default, true);
 
             writer.Write7BitEncodedInt(1); //Type Reader Count
             writer.Write(this.ContentReader); //Content Reader
@@ -34,8 +35,7 @@ namespace XnaContentCompiler {
             MemoryStream resourceHeader = this.WriteResourceHeader();
             MemoryStream resource = this.WriteResource();
 
-            //Size
-            writer.Write(10 + resourceHeader.Length + resource.Length);
+            writer.Write(10 + (int)resourceHeader.Length + (int)resource.Length);  //Size
 
             writer.Write(resourceHeader.ToArray());
             writer.Write(resource.ToArray());

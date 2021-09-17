@@ -14,10 +14,11 @@ switch (extension) {
         Texture2dCompiler texture2dCompiler = new(inPath);
         texture2dCompiler.Compile(outPath);
 
-        Console.WriteLine($"Wrote to {outPath}; have fun!");
+        Console.WriteLine($"Wrote to '{outPath}'");
 
         break;
     }
 }
 
+Console.WriteLine("Press enter to exit.");
 Console.ReadLine();

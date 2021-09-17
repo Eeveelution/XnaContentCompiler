@@ -45,9 +45,9 @@ namespace XnaContentCompiler {
 
         #region Overrides
 
-        public abstract string ContentReader { get; set; }
-        public abstract int ContentReaderVersion { get; set; }
-        public abstract MemoryStream WriteResource();
+        protected abstract string ContentReader { get; set; }
+        protected abstract int ContentReaderVersion { get; set; }
+        protected abstract MemoryStream WriteResource();
 
 
         #endregion

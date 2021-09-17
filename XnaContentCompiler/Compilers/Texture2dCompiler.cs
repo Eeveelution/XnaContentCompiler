@@ -24,9 +24,9 @@ namespace XnaContentCompiler.Compilers {
                 b.UnlockBits(data);
             }
         }
-        public override string ContentReader { get; set; } = "Microsoft.Xna.Framework.Content.Texture2DReader";
-        public override int ContentReaderVersion { get; set; } = 0;
-        public override MemoryStream WriteResource() {
+        protected override string ContentReader { get; set; } = "Microsoft.Xna.Framework.Content.Texture2DReader";
+        protected override int ContentReaderVersion { get; set; } = 0;
+        protected override MemoryStream WriteResource() {
             MemoryStream stream = new();
             using BinaryWriter writer = new(stream, Encoding.Default, true);
 
